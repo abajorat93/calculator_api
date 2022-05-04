@@ -1,0 +1,1 @@
+Run "uvicorn app.main:app --reload" to start calculator api locally
