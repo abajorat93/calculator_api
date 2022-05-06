@@ -6,8 +6,8 @@ app = FastAPI()
 async def sum(v1: int, v2: int):
     return {"resultado": int(calc.sum(v1, v2))}
 
-@app.get("/subtract")
-async def sum(v1: float, v2: float):
+@app.get("/substract/{v1}/{v2}")
+async def substract(v1: float, v2: float):
     return {"resultado": calc.subtract(v1, v2)}
 
 @app.get("/divide/{v1}/{v2}")
