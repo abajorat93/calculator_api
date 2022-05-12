@@ -1,7 +1,6 @@
 import string
 import numpy as np
 import logging
-from mimetypes import init
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
