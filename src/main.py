@@ -1,7 +1,7 @@
 import logging
 from webbrowser import Opera
 from fastapi import FastAPI
-from math_ops.operations import Operations
+from src.calculator import calculator as calc
 
 
 # DEBUG: Detailed information, typically of interest only when diagnosing problems.
@@ -28,8 +28,7 @@ app = FastAPI()
 
 @app.get("/sum/{v1}/{v2}")
 async def sum(v1: int, v2: int):
-    ops = Operations()
-    result = int(ops.get_sum(v1, v2))
+    result = int(calc.sum(v1, v2))
     logger.debug(f"'resultado': {result}")
     logger.info(f"'resultado': {result}")
     return {"resultado": result}
@@ -37,8 +36,7 @@ async def sum(v1: int, v2: int):
 
 @app.get("/subtract/{v1}/{v2}")
 async def subtract(v1: float, v2: float):
-    ops = Operations()
-    result = int(ops.get_subtract(v1, v2))
+    result = int(calc.subtract(v1, v2))
     logger.debug(f"'resultado': {result}")
     logger.info(f"'resultado': {result}")
     return {"resultado": result}
@@ -46,13 +44,12 @@ async def subtract(v1: float, v2: float):
 
 @app.get("/divide/{v1}/{v2}")
 async def divide(v1: float, v2: float):
-    ops = Operations()
     if v2 == 0 or v1 == 0:
         print("resultado: cannot divide with 0")
         logger.error("'resultado': 'cannot divide with 0'")
         return {"resultado": "can't divide with 0"}
 
-    result = int(ops.get_division(v1, v2))
+    result = int(calc.division(v1, v2))
     logger.debug(f"'resultado': {result}")
     logger.info(f"'resultado': {result}")
     return {"resultado": result}
@@ -61,11 +58,10 @@ async def divide(v1: float, v2: float):
 @app.get("/multiply/{text}")
 async def multiply(text: str):
     try:
-        ops = Operations()
         values = text.split("*")
         v1 = values[0]
         v2 = values[1]
-        result = int(ops.get_multiplication(v1, v2))
+        result = int(calc.multiplication(v1, v2))
         logger.debug(f"'resultado': {result}")
         logger.info(f"'resultado': {result}")
         return {"resultado": result}

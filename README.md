@@ -29,7 +29,7 @@ pip install -r requirements.txt
 Run next commando to start calculator api locally
 
 ```
-uvicorn app.main:app --reload
+uvicorn src.main:app --reload
 ```
 
 # Logging levels
@@ -42,3 +42,9 @@ uvicorn app.main:app --reload
 * ERROR: Due to a more serious problem, the software has not been able to perform some function.
 
 * CRITICAL: A serious error, indicating that the program itself may be unable to continue running.
+
+# RUn with Docker
+```
+docker build . -t calc_api 
+docker run calc_api
+```
