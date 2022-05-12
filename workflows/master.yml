@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  pytest:
+  build:
     name: Execute Pytest
     runs-on: ubuntu-latest
     steps:
