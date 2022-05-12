@@ -10,4 +10,8 @@ name: CI
 jobs:
   pytest:
     name: Execute Pytest
-    run: pytest
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: Run All Pytests
+        run: pytest
