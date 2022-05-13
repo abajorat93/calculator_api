@@ -1,6 +1,6 @@
 import logging
 from fastapi import FastAPI
-from src.calculator import calculator as calc
+from .calculator import calculator as calc
 
 
 # DEBUG: Detailed information, typically of interest only when diagnosing problems.
@@ -11,7 +11,7 @@ from src.calculator import calculator as calc
 # CRITICAL: A serious error, indicating that the program itself may be unable to continue running.
 
 logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
+logger.setLevel(logging.DEBUG)
 
 formatter = logging.Formatter("%(asctime)s:%(levelname)s:%(name)s:%(message)s")
 
@@ -49,7 +49,7 @@ async def divide(v1: float, v2: float):
         logger.error("'resultado': 'cannot divide with 0'")
         return {"resultado": "can't divide with 0"}
 
-    result = int(calc.division(v1, v2))
+    result = int(calc.divide(v1, v2))
     logger.debug(f"'resultado': {result}")
     logger.info(f"'resultado': {result}")
     return {"resultado": result}
@@ -61,7 +61,7 @@ async def multiply(text: str):
         values = text.split("*")
         v1 = values[0]
         v2 = values[1]
-        result = int(calc.multiplication(v1, v2))
+        result = int(calc.multiply(v1, v2))
         logger.debug(f"'resultado': {result}")
         logger.info(f"'resultado': {result}")
         return {"resultado": result}
